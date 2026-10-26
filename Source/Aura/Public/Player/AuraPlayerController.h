@@ -4,9 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "InputMappingContext.h"
 #include "AuraPlayerController.generated.h"
-
+class UInputMappingContext;
+class UInputAction;
+class IEnemyInterface;
+struct FInputActionValue;
 /**
  * 
  */
@@ -14,6 +16,30 @@ UCLASS()
 class AURA_API AAuraPlayerController : public APlayerController
 {
 	GENERATED_BODY()
+	
+public:
+	
+	AAuraPlayerController();
+	
+	
+	
+protected:
+	
+	virtual void BeginPlay() override;
+	virtual void PlayerTick( float DeltaTime ) override;
+	virtual void SetupInputComponent() override;
+	
+private:
 	UPROPERTY(EditAnywhere,Category="MappingContext")
-	TObjectPtr<UInputMappingContext> AuraMappingContext;
+    TObjectPtr<UInputMappingContext> AuraMappingContext;
+	
+	UPROPERTY(EditAnywhere,Category="MoveAction|InputAction")
+	TObjectPtr<UInputAction> MoveAction;
+	
+	void Move(const FInputActionValue& InputActionValue);
+	
+	void CursorTrace();
+	
+	IEnemyInterface* LastActor;
+	IEnemyInterface* CurrentActor;
 };
