@@ -50,6 +50,10 @@ public:
 	UPROPERTY(BlueprintReadOnly,Category="Widget")
 	TObjectPtr<UAttributeSet> AttributeSet;
 	
+	/*
+	 * BroadcastInitialValue：初始化，在UI加载的瞬间绑定初始数据
+	 * BindCallbacksToDependencies：订阅GAS属性变更依赖，做好数据监听
+	 */
 	virtual void BroadcastInitialValue();
 	
     virtual void BindCallbacksToDependencies();

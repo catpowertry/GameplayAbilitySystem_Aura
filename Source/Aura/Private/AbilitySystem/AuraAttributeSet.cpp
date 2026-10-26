@@ -4,10 +4,50 @@
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AttributeSet.h"
+#include "AuraGameplayTag.h"
 #include "Net/UnrealNetwork.h"
 UAuraAttributeSet::UAuraAttributeSet()
 {
+ const FAuraGameplayTags& GameplayTags = FAuraGameplayTags::Get();
+	
+	 const FAuraGameplayTags Tags = GameplayTags.Get();
+	
+	/*
+	 *
+	 * 将所有使用的GameplayAttributeMap添加到Map中
+	 * PrimaryAttributeTag
+	 */
+	AttributeMap.Add(Tags.Attribute_Primary_Strength,GetStrengthAttribute);
+	
+	AttributeMap.Add(Tags.Attribute_Primary_Intelligence,GetIntelligenceAttribute);
+	
+	AttributeMap.Add(Tags.Attribute_Primary_Vigor,GetVigorAttribute);
+	
+	AttributeMap.Add(Tags.Attribute_Primary_Resilence,GetResilenceAttribute);
+	
+	/*
+	 *SecondaryAttributeTag
+	 * 
+	 */
+	
+	AttributeMap.Add(Tags.Attribute_Secondary_Armor,GetArmorAttribute);
+	
+	AttributeMap.Add(Tags.Attribute_Secondary_BlockChance,GetBlockChanceAttribute);
 
+	AttributeMap.Add(Tags.Attribute_Secondary_CriticalHitChance,GetCriticalHitChanceAttribute);
+	
+	AttributeMap.Add(Tags.Attribute_Secondary_CriticalHitDamage,GetCriticalHitDamageAttribute);
+
+	AttributeMap.Add(Tags.Attribute_Secondary_CriticalHitResistance,GetCriticalHitResistanceAttribute);
+	
+	AttributeMap.Add(Tags.Attribute_Secondary_HealthRegeneration,GetHealthRegenerationAttribute);
+	
+    AttributeMap.Add(Tags.Attribute_Secondary_ManaRegeneration,GetManaRegenerationAttribute);
+	
+    AttributeMap.Add(Tags.Attribute_Secondary_MaxHealth,GetMaxHealthAttribute);
+	
+    AttributeMap.Add(Tags.Attribute_Secondary_MaxMana,GetMaxManaAttribute);
+	
 }
 
 void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const

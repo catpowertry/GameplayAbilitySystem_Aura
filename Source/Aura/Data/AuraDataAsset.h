@@ -36,5 +36,5 @@ public:
 	TArray<FAuraAttributeInfo> AuraAttributesList;
 	
 	UFUNCTION(BlueprintCallable)
-	FAuraAttributeInfo AttributeInfo(FGameplayTag AttributeTag,bool bLogNotFound);
+	FAuraAttributeInfo FindAttributeInfo(FGameplayTag AttributeTag,bool bLogNotFound);
 };

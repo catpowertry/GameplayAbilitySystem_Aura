@@ -8,6 +8,7 @@
 
 class UOverlayWidgetController;
 class UAuraWidgetController;
+class UAttributeMenuWidgetController;
 /**
  * 
  */
@@ -18,7 +19,11 @@ class AURA_API UWidgetBlueprintFunctionLibrary : public UBlueprintFunctionLibrar
 	/*
 	 *1.BlueprintPure让这个蓝图不是一个运行节点只负责输入数据计算输出数据
 	 * 2.一定是静态函数（因为不需要任何前后文就可以直接调用函数获取数据）
+	 * 分别是获取覆层WidgetController弹出的属性框的WidgetController都用于UI的数据流控制
 	 */
 	UFUNCTION(BlueprintPure,Category = "BlueprintLibrary")
 	static UOverlayWidgetController* GetOverlayWidgetController(UObject* WorldContextObject);
+	
+	UFUNCTION(BlueprintPure,Category = "BlueprintLibrary")
+	static UAttributeMenuWidgetController* GetAttributeMenuWidgetController(UObject* WorldContextObject);
 };

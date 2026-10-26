@@ -12,6 +12,16 @@
 	GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
 	GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
 	GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
+	
+/*
+ *
+ * 返回一个函数并使用命名（类型为模板）
+ */
+template<class T>
+using TAttributeFuncPtr = TBaseStaticDelegateInstance<T,FDefaultDelegateUserPolicy>::FFuncPtr;
+
+struct FAuraGameplayTags;
+DECLARE_DELEGATE_RetVal(FGameplayAttribute, FAttributeSignature);
 class UGameplayEffectType;
 
 USTRUCT(BlueprintType)
@@ -19,6 +29,8 @@ struct FEffectProperties
 {
 	GENERATED_BODY()
 public:
+	
+
 	
 	UPROPERTY(BlueprintReadOnly)
 	AActor* AvatarActor = nullptr;
@@ -136,6 +148,20 @@ public:
 	UPROPERTY(BlueprintReadOnly,ReplicatedUsing = OnRep_MaxMana,Category="Base Attributes")
     FGameplayAttributeData MaxMana;
     ATTRIBUTE_ACCESSORS(UAuraAttributeSet,MaxMana)
+	
+	
+	/*
+	 *
+	 * 可以遍历查找方便，主要使用WidgetController Tag绑定
+	 */
+	TMap<FGameplayTag,TAttributeFuncPtr<FGameplayAttribute()>> AttributeMap;
+
+	
+	/*
+	 *
+	 * OnRep函数
+	 */
+	
 	UFUNCTION()
 	void OnRep_Health(const FGameplayAttributeData& OldHealth) const ;
 	

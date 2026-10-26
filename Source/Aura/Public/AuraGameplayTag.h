@@ -9,14 +9,14 @@
  * 
  */
 
-struct FAuraGameplayTag
+struct FAuraGameplayTags
 {
 public:
-	static const FAuraGameplayTag& Get() {return AuraGameplayTag;}
+	static const FAuraGameplayTags& Get() {return Tags;}
 	static void InitActiveAuraGameplayTag();
 private:
-	static FAuraGameplayTag AuraGameplayTag;
-protected:
+	static FAuraGameplayTags Tags;
+public:
 	/*
 	 *Secondary Attributes
 	 */

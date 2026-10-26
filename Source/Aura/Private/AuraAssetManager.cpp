@@ -15,5 +15,5 @@ const UAuraAssetManager& UAuraAssetManager::Get()
 void UAuraAssetManager::StartInitialLoading()
 {
 	Super::StartInitialLoading();
-	FAuraGameplayTag::InitActiveAuraGameplayTag();
+	FAuraGameplayTags::InitActiveAuraGameplayTag();
 }
