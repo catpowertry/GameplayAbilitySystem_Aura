@@ -23,6 +23,8 @@ public:
 	virtual void InitAbilityInfo();
 		
 	virtual int32 GetPlayerLevel() const;
+	
+	virtual void AddCharacterAbilities();
 protected:
 	virtual void BeginPlay() override;
 	
@@ -48,4 +50,7 @@ protected:
 	
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Effects")
 	TSubclassOf<UGameplayEffect> DefaultSecondaryEffect;
+	
+	UPROPERTY(EditAnywhere,Category = "GameplayAbility")
+	TArray<TSubclassOf<UGameplayAbility>> StartGameplayAbilities;
 };

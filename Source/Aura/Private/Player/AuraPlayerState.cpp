@@ -29,6 +29,10 @@ AAuraPlayerState::AAuraPlayerState()
 void AAuraPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	/*
+	 *
+	 * 等级状态同步至服务器
+	 */
 	DOREPLIFETIME(AAuraPlayerState,Level);
 }
 

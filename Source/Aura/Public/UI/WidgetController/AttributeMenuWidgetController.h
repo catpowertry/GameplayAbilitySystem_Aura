@@ -33,7 +33,7 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadOnly)
 	TObjectPtr<UAuraDataAsset> AttributeInfo;
 	
-	void BroadcastInfo(const TPair<FGameplayTag, FGameplayAttribute(*)()>& Pair,const UAttributeSet* AS ) const 
+	inline void BroadcastInfo(const TPair<FGameplayTag, FGameplayAttribute(*)()>& Pair,const UAttributeSet* AS ) const 
 	{
 		FAuraAttributeInfo Info = AttributeInfo->FindAttributeInfo(Pair.Key,false);
 		Info.AttributeValue = Pair.Value().GetNumericValue(AS);

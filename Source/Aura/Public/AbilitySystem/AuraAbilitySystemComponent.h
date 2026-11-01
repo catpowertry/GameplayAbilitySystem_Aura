@@ -22,7 +22,25 @@ protected:
 public:
 	void InitAbilityActorInfoSet();
 	
+	
+	/*
+	 *
+	 * 添加初始GameplayAbility
+	 */
+	void AddStartGameplayAbility(const TArray<TSubclassOf<UGameplayAbility>>& StartGameplayAbility);
+	
 	void EffectDeclare(UAbilitySystemComponent* SelfASC, const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle EffectHandle);
 
-	FActiveEffectAssetTag BroadcastAssetTagToWidgetController;
+	
+	/*
+	 *激活的EffectGameplayTag推送委托
+	 * 
+	 */
+	FActiveEffectAssetTag FActiveTagDelegate;
+	
+	void AbilityInputTagPressed(FGameplayTag& Tag);
+	
+	void AbilityInputTagReleased(FGameplayTag& Tag);
+	
+	void AbilityInputTagHeld(FGameplayTag& Tag);
 };

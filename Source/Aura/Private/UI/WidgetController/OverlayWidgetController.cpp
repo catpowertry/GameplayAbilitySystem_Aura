@@ -41,7 +41,7 @@
 		 OnMaxManaChange.Broadcast(Data.NewValue);
 	 }
 	 );
- 	Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent)->BroadcastAssetTagToWidgetController.AddLambda(
+ 	Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent)->FActiveTagDelegate.AddLambda(
  	[this] (const FGameplayTagContainer& Container)
  	{
  		if (DataTable == nullptr) return;

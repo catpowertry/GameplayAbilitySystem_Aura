@@ -96,6 +96,12 @@ void AAuraCharacter::PossessedBy(AController* PlayerController)
 	Super::PossessedBy(PlayerController);
 	//Init ability actor info in server
 	InitAbilityInfo();
+	
+	/*
+	 *
+	 * 初始化角色能力（从Character中拉出数据，在GAS系统中进行处理）
+	 */
+	AddCharacterAbilities();
 }
 
 

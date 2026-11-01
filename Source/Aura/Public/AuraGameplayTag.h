@@ -38,4 +38,16 @@ public:
 	FGameplayTag Attribute_Primary_Vigor;
 	FGameplayTag Attribute_Primary_Resilence;
 	
+	
+	/*
+	 *InputAction
+	 * 
+	 */
+	 
+	 FGameplayTag InputTag_LMB;
+	 FGameplayTag InputTag_RMB;
+	 FGameplayTag InputTag_1;
+	 FGameplayTag InputTag_2;
+	 FGameplayTag InputTag_3;
+	 FGameplayTag InputTag_4;
 };

@@ -5,9 +5,13 @@
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "AuraPlayerController.generated.h"
+class UAuraAbilitySystemComponent;
 class UInputMappingContext;
 class UInputAction;
 class IEnemyInterface;
+class UAuraInputConfig;
+class USplineComponent;
+struct FGameplayTag;
 struct FInputActionValue;
 /**
  * 
@@ -21,7 +25,7 @@ public:
 	
 	AAuraPlayerController();
 	
-	
+	UAuraAbilitySystemComponent* GetAuraAbilityComponent()  ;
 	
 protected:
 	
@@ -40,6 +44,39 @@ private:
 	
 	void CursorTrace();
 	
+	FHitResult CursorHit;
+	
 	IEnemyInterface* LastActor;
 	IEnemyInterface* CurrentActor;
+	
+	void AbilityInputPressed(FGameplayTag Tag);
+	
+	void AbilityInputReleased(FGameplayTag Tag);
+	
+	void AbilityInputHeld(FGameplayTag Tag);
+	
+	UPROPERTY(EditDefaultsOnly,Category="Input")
+	TObjectPtr<UAuraInputConfig> InputConfig;
+	
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UAuraAbilitySystemComponent> ASC;
+	
+	
+	/*
+	 * CurserMove
+	 */
+public:
+	FVector CachedLocation = FVector::ZeroVector;
+	
+	float FollowTime = 0.f;
+	
+	bool bIsAutoRunning = false;
+	
+	float ShortPressedTime = 0.5f;
+	
+	UPROPERTY(EditDefaultsOnly)
+	float AutoRunAcceptanceRadios = 20.f;
+	
+	UPROPERTY(VisibleAnywhere)
+	TObjectPtr<USplineComponent> Spline;
 };
