@@ -5,6 +5,7 @@
 
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AuraGameplayTag.h"
+#include "Aura/Public/Debug/NetDebugMacro.h"
 #include "EnhancedInputComponent.h"
 #include "Aura/Public/Interaction/EnemyInterface.h"
 #include "GameplayTagContainer.h"
@@ -63,9 +64,9 @@ void AAuraPlayerController::PlayerTick(float DeltaTime)
 			if (!Spline) return;
             const FVector Location = Spline->FindLocationClosestToWorldLocation(ControllerPawn->GetActorLocation(),ESplineCoordinateSpace::World);
             const FVector Direction = Spline->FindDirectionClosestToWorldLocation(Location,ESplineCoordinateSpace::World);
-            		
+            NET_LOG(TEXT(""));
             ControllerPawn->AddMovementInput(Direction);
-            		
+			NET_LOG(TEXT(""));
             const float DistanceToLocation = (Location-CachedLocation).Length();
             if (DistanceToLocation <= AutoRunAcceptanceRadios)
             {

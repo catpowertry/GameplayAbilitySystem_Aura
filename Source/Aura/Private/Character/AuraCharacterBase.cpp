@@ -51,7 +51,5 @@ void AAuraCharacterBase::AddCharacterAbilities()
 	 *
 	 * AbilitySystemComponent中初始化所有初始能力
 	 */
-	ASC->AddStartGameplayAbility(StartGameplayAbilities);
-	
 }
 
